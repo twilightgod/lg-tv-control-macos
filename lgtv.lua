@@ -14,7 +14,8 @@ local config = {
     -- You can also disable it by creating an empty file  at `~/.disable_lgtv`.
 
     -- You likely will not need to change anything below this line
-    screen_off_command = "screen_off",
+    -- screen_off_command = "screen_off",
+    screen_off_command = "power_off",
     key_file_path = "~/.aiopylgtv.sqlite",
     connected_tv_identifiers = {"LG TV", "LG TV SSCR2"},
     bin_path = "~/bin/bscpylgtvcommand",
