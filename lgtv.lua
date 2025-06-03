@@ -68,6 +68,8 @@ end
 function LGTVController:execute_command(command, strip)
     strip = strip or false
     local full_command = self.bin_cmd .. command
+    local max_retries = 5
+    local retry_delay_us = 1000000 -- 1 second in microseconds
 
     local function try_execute()
         log_debug("Executing command: " .. full_command)
@@ -78,14 +80,19 @@ function LGTVController:execute_command(command, strip)
         return nil
     end
 
-    local output = try_execute()
-    if not output then
-        hs.timer.usleep(1000000) -- 1 second in microseconds
-        log_debug("Retrying command after 1 second delay...")
+    local output
+    for attempt = 1, max_retries do
         output = try_execute()
-        if not output then
-            return nil
+        if output then
+            break
+        elseif attempt < max_retries then
+            log_debug("Retrying command in 1 second (attempt " .. (attempt + 1) .. " of " .. max_retries .. ")...")
+            hs.timer.usleep(retry_delay_us)
         end
+    end
+
+    if not output then
+        return nil
     end
 
     if strip then

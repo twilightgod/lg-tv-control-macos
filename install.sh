@@ -68,7 +68,12 @@ if [ -f ~/.hammerspoon/lgtv_init.lua ]; then
     perl -ni -e 'print unless /require "lgtv_init"/' ~/.hammerspoon/init.lua
 fi
 
-cp ./tools/dist/bscpylgtvcommand-$ARCH ~/bin/bscpylgtvcommand
+# install bscpylgtvcommand seprately
+# https://github.com/chros73/bscpylgtv
+# cp /opt/homebrew/bin/bscpylgtvcommand ~/bin/bscpylgtvcommand
+
+# The built-in one doesn't work
+#cp ./tools/dist/bscpylgtvcommand-$ARCH ~/bin/bscpylgtvcommand
 
 # Prompt for TV IP address
 echo -n -e "\nPlease enter your LG TV's IP address: "
