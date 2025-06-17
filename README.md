@@ -38,3 +38,8 @@ Change the HDMI input at the top of `~/.hammerspoon/lgtv.lua` script, if needed.
 
 This new and updated version no longer uses LGWebOSRemote, and does not require installing Python. It is therefore much easier to get going. 🎉
 
+## 
+```
+bscpylgtvcommand -p ~/.aiopylgtv.sqlite <ip> enable_tpc_or_gsr tpc false
+bscpylgtvcommand -p ~/.aiopylgtv.sqlite <ip> enable_tpc_or_gsr gsr false
+```
